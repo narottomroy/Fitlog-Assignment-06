@@ -5,7 +5,10 @@ import Link from "next/link";
 const Navbar = () => {
   const links = [
     <li key="workout">
-      <Link href="/Workout">Workout</Link>
+      <Link href="/">Workout</Link>
+    </li>,
+    <li key={"workout"}>
+      <Link href="/my-plan">My Plan</Link>
     </li>,
   ];
   return (

@@ -12,7 +12,7 @@ const WorkCard = ({ worksData }: IWorkoutProps) => {
   return (
     <div>
       <Link
-        href={`/workouts/${worksData.id}`}
+        href={`/works/${worksData.id}`}
         className="group block overflow-hidden rounded-2xl border border-slate-700 bg-[#15171c] transition-all duration-300 hover:-translate-y-1 hover:border-lime-400 hover:shadow-lg hover:shadow-lime-400/10"
       >
         {/* Image */}

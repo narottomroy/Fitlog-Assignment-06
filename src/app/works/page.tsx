@@ -1,5 +1,5 @@
+import WorkCard from "@/components/shared/WorkCard";
 import { IWorkout } from "@/type/workoutType";
-import WorkCard from "../shared/WorkCard";
 
 const getWorks = async () => {
   const res = await fetch("https://api.abcz.workers.dev/api/fitlog");

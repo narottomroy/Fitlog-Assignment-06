@@ -1,5 +1,5 @@
 export interface IWorkout {
-  id: number;
+  id: string;
   name: string;
   image: string;
   muscleGroups: ["Chest", "Arms"];
