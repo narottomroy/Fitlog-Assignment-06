@@ -44,7 +44,6 @@ const Navbar = () => {
               </svg>
             </div>
 
-            {/* Mobile Dropdown */}
             <ul
               tabIndex={-1}
               className="menu menu-sm dropdown-content z-50 mt-3 w-52 rounded-box border border-slate-800 bg-[#15171c] p-2 shadow-xl"
