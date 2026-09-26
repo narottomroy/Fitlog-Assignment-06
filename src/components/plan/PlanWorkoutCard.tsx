@@ -54,8 +54,6 @@ const PlanWorkoutCard = ({ workout, activeTab }: PlanWorkoutCardProps) => {
 
   return (
     <div className="flex flex-col gap-5 rounded-2xl border border-slate-800 bg-[#15171c] p-4 transition-all duration-300 hover:border-slate-600 sm:flex-row sm:items-center">
-      {/* ================= IMAGE ================= */}
-
       <div className="relative h-24 w-full shrink-0 overflow-hidden rounded-xl sm:w-36">
         <Image
           src={workout.image}
@@ -65,9 +63,6 @@ const PlanWorkoutCard = ({ workout, activeTab }: PlanWorkoutCardProps) => {
           className="object-cover"
         />
       </div>
-
-      {/* ================= WORKOUT INFO ================= */}
-
       <div className="min-w-0 flex-1">
         <h3 className="text-lg font-black uppercase tracking-wide text-white">
           {workout.name}

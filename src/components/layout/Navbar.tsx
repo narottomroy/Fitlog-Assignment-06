@@ -1,75 +1,83 @@
 "use client";
 
 import Logo from "@/assets/logo.png";
+import { WorkoutContext } from "@/context/WorkContext";
 import Image from "next/image";
 import Link from "next/link";
-import { FiMenu } from "react-icons/fi";
+import { useContext, useState } from "react";
 
 const Navbar = () => {
-  return (
-    <header className="border-b border-slate-800 bg-black">
-      <div className="navbar mx-auto w-full max-w-7xl px-4">
-        <div className="navbar-start">
-          <Link href="/" className="flex items-center gap-2">
-            <Image
-              src={Logo}
-              alt="FitLog logo"
-              width={38}
-              height={38}
-              priority
-            />
+  const context = useContext(WorkoutContext);
 
-            <span className="text-xl font-black uppercase text-white">
-              FitLog
-            </span>
+  const [activeLink, setActiveLink] = useState("workout");
+
+  if (!context) {
+    return null;
+  }
+
+  const { todaysPlan, savedWorkouts } = context;
+
+  return (
+    <nav className="border-b border-[#191c21] bg-[#0b0d0f] py-2">
+      <div className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between px-4">
+        <Link href="/">
+          <div className="flex justify-center items-center gap-4">
+            <Image src={Logo} alt="FitLog" width={35} height={18} priority />
+            <h1 className="text-2xl font-bold">FITLOG</h1>
+          </div>
+        </Link>
+
+        <div className="flex items-center gap-1">
+          <Link
+            href="/"
+            onClick={() => setActiveLink("workout")}
+            className={`rounded-full px-4 py-2 text-[11px] font-semibold transition ${
+              activeLink === "workout"
+                ? "bg-[#18220e] text-[#ccff00]"
+                : "text-slate-500 hover:text-white"
+            }`}
+          >
+            Workout
+          </Link>
+
+          <Link
+            href="/my-plan"
+            onClick={() => setActiveLink("my-plan")}
+            className={`rounded-full px-4 py-2 text-[11px] font-semibold transition ${
+              activeLink === "my-plan"
+                ? "bg-[#18220e] text-[#ccff00]"
+                : "text-slate-500 hover:text-white"
+            }`}
+          >
+            My Plan
           </Link>
         </div>
 
-        <nav className="navbar-center hidden lg:flex">
-          <div className="flex items-center gap-2">
-            <Link
-              href="/"
-              className="rounded-lg px-5 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-800 hover:text-lime-400"
-            >
-              Workout
-            </Link>
+        <div className="flex items-center gap-5">
+          <Link
+            href="/my-plan"
+            className="flex items-center gap-2 text-[11px] text-slate-400"
+          >
+            <span>Plan</span>
 
-            <Link
-              href="/my-plan"
-              className="rounded-lg px-5 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-800 hover:text-lime-400"
-            >
-              My Plan
-            </Link>
-          </div>
-        </nav>
+            <span className="flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-[#ccff00] px-1 text-[9px] font-black text-black">
+              {todaysPlan.length}
+            </span>
+          </Link>
 
-        <div className="navbar-end lg:hidden">
-          <div className="dropdown dropdown-end">
-            <button
-              type="button"
-              tabIndex={0}
-              className="btn btn-ghost text-white"
-              aria-label="Open menu"
-            >
-              <FiMenu size={24} />
-            </button>
+          <Link
+            href="/my-plan"
+            className="flex items-center gap-2 text-[11px] text-slate-400"
+          >
+            <span>Saved</span>
 
-            <ul
-              tabIndex={-1}
-              className="menu dropdown-content z-50 mt-3 w-48 rounded-xl border border-slate-700 bg-[#15171c] p-2 shadow-xl"
-            >
-              <li>
-                <Link href="/">Workout</Link>
-              </li>
-
-              <li>
-                <Link href="/my-plan">My Plan</Link>
-              </li>
-            </ul>
-          </div>
+            <span className="flex h-[18px] min-w-[18px] items-center justify-center rounded-full border border-[#30343a] px-1 text-[9px] font-semibold text-slate-400">
+              {savedWorkouts.length}
+            </span>
+          </Link>
         </div>
       </div>
-    </header>
+    </nav>
   );
 };
 

@@ -54,7 +54,6 @@ const MyPlanPage = () => {
 
   return (
     <main className="mx-auto w-full max-w-7xl px-4 py-10">
-      {/* Header */}
       <div>
         <h1 className="text-3xl font-black uppercase text-white">MY PLAN</h1>
 
@@ -63,10 +62,8 @@ const MyPlanPage = () => {
         </p>
       </div>
 
-      {/* Summary */}
       <div className="mt-7 overflow-hidden rounded-2xl border border-slate-800 bg-[#15171c]">
         <div className="grid grid-cols-1 md:grid-cols-3">
-          {/* Exercises */}
           <div className="border-b border-slate-800 px-6 py-7 md:border-b-0 md:border-r">
             <p className="text-sm text-slate-400">Exercises</p>
 
@@ -75,7 +72,6 @@ const MyPlanPage = () => {
             </p>
           </div>
 
-          {/* Minutes */}
           <div className="border-b border-slate-800 px-6 py-7 md:border-b-0 md:border-r">
             <p className="text-sm text-slate-400">Minutes</p>
 
@@ -84,7 +80,6 @@ const MyPlanPage = () => {
             </p>
           </div>
 
-          {/* Calories */}
           <div className="px-6 py-7">
             <p className="text-sm text-slate-400">Calories</p>
 
@@ -95,9 +90,7 @@ const MyPlanPage = () => {
         </div>
       </div>
 
-      {/* Tabs + Sort */}
       <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        {/* Tabs */}
         <div className="flex w-fit rounded-xl border border-slate-800 bg-[#15171c] p-1">
           <button
             type="button"
@@ -124,7 +117,6 @@ const MyPlanPage = () => {
           </button>
         </div>
 
-        {/* Sort */}
         <div className="flex items-center gap-2">
           <span className="text-sm text-slate-400">Sort By</span>
 
@@ -146,7 +138,6 @@ const MyPlanPage = () => {
         </div>
       </div>
 
-      {/* Workout List */}
       <div className="mt-6 space-y-4">
         {currentWorkouts.length === 0 ? (
           <div className="flex min-h-[350px] items-center justify-center rounded-2xl border border-dashed border-slate-700 bg-[#101418]">
