@@ -14,7 +14,6 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
       href={`/works/${workout.id}`}
       className="group block overflow-hidden rounded-2xl border border-slate-800 bg-[#15171c] transition-all duration-300 hover:-translate-y-1 hover:border-lime-400 hover:shadow-lg hover:shadow-lime-400/10"
     >
-      {/* IMAGE */}
       <div className="relative aspect-[4/3] w-full overflow-hidden">
         <Image
           src={workout.image}
@@ -25,9 +24,7 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
         />
       </div>
 
-      {/* CONTENT */}
       <div className="p-5">
-        {/* MUSCLE GROUPS */}
         <div className="flex flex-wrap gap-2">
           {workout.muscleGroups.map((muscle) => (
             <span
@@ -39,17 +36,14 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
           ))}
         </div>
 
-        {/* NAME */}
         <h2 className="mt-4 text-xl font-black uppercase tracking-wide text-white">
           {workout.name}
         </h2>
 
-        {/* EQUIPMENT */}
         <p className="mt-1 text-sm text-slate-400">{workout.equipment}</p>
 
         <div className="my-4 border-t border-slate-800" />
 
-        {/* STATS */}
         <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
           <div className="flex items-center gap-2">
             <FiClock size={16} className="text-lime-400" />

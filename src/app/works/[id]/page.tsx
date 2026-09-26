@@ -33,7 +33,6 @@ const WorkoutDetailsPage = async ({ params }: WorkoutDetailsPageProps) => {
   return (
     <main className="mx-auto my-10 w-full max-w-7xl px-4">
       <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2">
-        {/* ================= LEFT SIDE ================= */}
         <div className="relative min-h-[600px] overflow-hidden rounded-2xl lg:min-h-0">
           <Image
             src={workout.image}
@@ -45,19 +44,15 @@ const WorkoutDetailsPage = async ({ params }: WorkoutDetailsPageProps) => {
           />
         </div>
 
-        {/* ================= RIGHT SIDE ================= */}
         <div className="flex flex-col">
-          {/* TITLE */}
           <h1 className="text-4xl font-black uppercase tracking-tight text-white md:text-5xl">
             {workout.name}
           </h1>
 
-          {/* DESCRIPTION */}
           <p className="mt-4 max-w-2xl text-base leading-7 text-slate-400">
             {workout.description}
           </p>
 
-          {/* MUSCLE GROUPS */}
           <div className="mt-5 flex flex-wrap gap-2">
             {workout.muscleGroups.map((muscle) => (
               <span
@@ -69,7 +64,6 @@ const WorkoutDetailsPage = async ({ params }: WorkoutDetailsPageProps) => {
             ))}
           </div>
 
-          {/* ================= INFO ================= */}
           <div className="mt-7 overflow-hidden rounded-2xl border border-slate-800 bg-[#15171c]">
             <div className="flex items-center justify-between border-b border-slate-800 px-6 py-5">
               <span className="text-xs font-bold uppercase tracking-wide text-slate-400">
@@ -139,7 +133,6 @@ const WorkoutDetailsPage = async ({ params }: WorkoutDetailsPageProps) => {
             </div>
           </div>
 
-          {/* ================= INSTRUCTIONS ================= */}
           <div className="mt-8">
             <h2 className="text-lg font-black uppercase text-white">
               Instructions
@@ -159,7 +152,6 @@ const WorkoutDetailsPage = async ({ params }: WorkoutDetailsPageProps) => {
             </ol>
           </div>
 
-          {/* ================= BUTTONS ================= */}
           <div className="mt-8 flex flex-wrap gap-4">
             <TodayPlanButton workout={workout} />
 

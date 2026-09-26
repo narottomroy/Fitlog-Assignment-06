@@ -20,7 +20,6 @@ const WorkoutSection = async () => {
 
   return (
     <section className="mx-auto my-12 w-full max-w-7xl px-4">
-      {/* HEADER */}
       <div>
         <p className="text-sm font-bold uppercase tracking-[0.15em] text-lime-400">
           Explore
@@ -35,7 +34,6 @@ const WorkoutSection = async () => {
         </p>
       </div>
 
-      {/* CARDS */}
       <div className="mt-7 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
         {workouts.map((workout) => (
           <WorkoutCard key={workout.id} workout={workout} />

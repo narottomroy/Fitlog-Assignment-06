@@ -28,8 +28,6 @@ const PlanWorkoutCard = ({ workout, activeTab }: PlanWorkoutCardProps) => {
 
   const { setTodaysPlan, setSavedWorkouts } = context;
 
-  // ================= REMOVE WORKOUT =================
-
   const handleRemove = () => {
     if (activeTab === "today") {
       setTodaysPlan((prev) => {
@@ -49,8 +47,6 @@ const PlanWorkoutCard = ({ workout, activeTab }: PlanWorkoutCardProps) => {
       toast.success(`${workout.name} removed from saved`);
     }
   };
-
-  // ================= COMPLETE =================
 
   const handleComplete = () => {
     toast.success(`${workout.name} completed!`);
@@ -73,17 +69,11 @@ const PlanWorkoutCard = ({ workout, activeTab }: PlanWorkoutCardProps) => {
       {/* ================= WORKOUT INFO ================= */}
 
       <div className="min-w-0 flex-1">
-        {/* Name */}
-
         <h3 className="text-lg font-black uppercase tracking-wide text-white">
           {workout.name}
         </h3>
 
-        {/* Equipment */}
-
         <p className="mt-1 text-sm text-slate-400">{workout.equipment}</p>
-
-        {/* Muscle Groups */}
 
         <div className="mt-2 flex flex-wrap gap-2">
           {workout.muscleGroups.map((muscle) => (
@@ -96,26 +86,18 @@ const PlanWorkoutCard = ({ workout, activeTab }: PlanWorkoutCardProps) => {
           ))}
         </div>
 
-        {/* Stats */}
-
         <div className="mt-3 flex flex-wrap items-center gap-4 text-xs text-slate-300">
-          {/* Duration */}
-
           <div className="flex items-center gap-1.5">
             <FiClock size={15} className="text-lime-400" />
 
             <span>{workout.duration} min</span>
           </div>
 
-          {/* Calories */}
-
           <div className="flex items-center gap-1.5">
             <FaFire size={14} className="text-lime-400" />
 
             <span>{workout.caloriesBurned} kcal</span>
           </div>
-
-          {/* Rating */}
 
           <div className="flex items-center gap-1.5">
             <FiStar size={15} className="text-lime-400" />
@@ -125,19 +107,13 @@ const PlanWorkoutCard = ({ workout, activeTab }: PlanWorkoutCardProps) => {
         </div>
       </div>
 
-      {/* ================= ACTIONS ================= */}
-
       <div className="flex shrink-0 flex-wrap items-center gap-3">
-        {/* View Details */}
-
         <Link
           href={`/works/${workout.id}`}
           className="rounded-full border border-slate-600 px-5 py-2.5 text-sm font-medium text-white transition hover:border-lime-400 hover:text-lime-400"
         >
           View Details
         </Link>
-
-        {/* Complete */}
 
         {activeTab === "today" && (
           <button
@@ -149,8 +125,6 @@ const PlanWorkoutCard = ({ workout, activeTab }: PlanWorkoutCardProps) => {
             Mark as Done
           </button>
         )}
-
-        {/* Remove */}
 
         <button
           type="button"

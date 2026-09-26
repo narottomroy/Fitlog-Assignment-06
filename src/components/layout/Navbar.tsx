@@ -9,7 +9,6 @@ const Navbar = () => {
   return (
     <header className="border-b border-slate-800 bg-black">
       <div className="navbar mx-auto w-full max-w-7xl px-4">
-        {/* Logo */}
         <div className="navbar-start">
           <Link href="/" className="flex items-center gap-2">
             <Image
@@ -26,7 +25,6 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Desktop Navigation */}
         <nav className="navbar-center hidden lg:flex">
           <div className="flex items-center gap-2">
             <Link
@@ -45,7 +43,6 @@ const Navbar = () => {
           </div>
         </nav>
 
-        {/* Mobile Menu */}
         <div className="navbar-end lg:hidden">
           <div className="dropdown dropdown-end">
             <button
