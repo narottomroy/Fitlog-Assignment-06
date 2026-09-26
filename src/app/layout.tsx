@@ -3,6 +3,7 @@ import WorkoutProvider from "@/context/WorkContext";
 import type { Metadata } from "next";
 import { ToastContainer } from "react-toastify";
 
+import FooterPage from "@/components/home/Footer";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 
@@ -24,6 +25,7 @@ export default function RootLayout({
 
           {children}
 
+          <FooterPage></FooterPage>
           <ToastContainer position="top-right" autoClose={2500} theme="dark" />
         </WorkoutProvider>
       </body>
