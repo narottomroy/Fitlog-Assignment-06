@@ -1,13 +1,13 @@
-import BannerSection from "@/components/homepage/Banner";
-import WorkoutPage from "@/components/homepage/Workout";
+import Banner from "@/components/home/Banner";
+import WorkoutSection from "@/components/home/WorkoutSection";
 
-const page = () => {
+const HomePage = () => {
   return (
-    <div>
-      <BannerSection></BannerSection>
-      <WorkoutPage></WorkoutPage>
-    </div>
+    <main>
+      <Banner />
+      <WorkoutSection />
+    </main>
   );
 };
 
-export default page;
+export default HomePage;

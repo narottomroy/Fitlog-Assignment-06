@@ -1,16 +1,20 @@
-import { IWorkout } from "@/type/workoutType";
+import SaveButton from "@/components/workout/SaveButton";
+import TodayPlanButton from "@/components/workout/TodayPlanButton";
+import { IWorkout } from "@/types/workoutType";
 import Image from "next/image";
 import { FaFire } from "react-icons/fa";
-import { FiBookmark, FiCalendar, FiClock, FiStar } from "react-icons/fi";
+import { FiClock, FiStar } from "react-icons/fi";
 
-interface WorkoutDetailsProps {
+interface WorkoutDetailsPageProps {
   params: Promise<{
     id: string;
   }>;
 }
 
 const getWorkout = async (id: string): Promise<IWorkout> => {
-  const res = await fetch(`https://api.abcz.workers.dev/api/fitlog/${id}`);
+  const res = await fetch(`https://api.abcz.workers.dev/api/fitlog/${id}`, {
+    cache: "no-store",
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch workout");
@@ -21,7 +25,7 @@ const getWorkout = async (id: string): Promise<IWorkout> => {
   return data;
 };
 
-const WorkoutDetailsPage = async ({ params }: WorkoutDetailsProps) => {
+const WorkoutDetailsPage = async ({ params }: WorkoutDetailsPageProps) => {
   const { id } = await params;
 
   const workout = await getWorkout(id);
@@ -29,30 +33,31 @@ const WorkoutDetailsPage = async ({ params }: WorkoutDetailsProps) => {
   return (
     <main className="mx-auto my-10 w-full max-w-7xl px-4">
       <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2">
-        {/* LEFT SIDE */}
-        <div className="relative min-h-[700px] overflow-hidden rounded-2xl">
+        {/* ================= LEFT SIDE ================= */}
+        <div className="relative min-h-[600px] overflow-hidden rounded-2xl lg:min-h-0">
           <Image
             src={workout.image}
             alt={workout.name}
             fill
             priority
+            sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"
           />
         </div>
 
-        {/* RIGHT SIDE */}
+        {/* ================= RIGHT SIDE ================= */}
         <div className="flex flex-col">
-          {/* Title */}
-          <h1 className="text-4xl font-black uppercase tracking-tight text-white">
+          {/* TITLE */}
+          <h1 className="text-4xl font-black uppercase tracking-tight text-white md:text-5xl">
             {workout.name}
           </h1>
 
-          {/* Description */}
-          <p className="mt-4 max-w-2xl text-base leading-6 text-slate-400">
+          {/* DESCRIPTION */}
+          <p className="mt-4 max-w-2xl text-base leading-7 text-slate-400">
             {workout.description}
           </p>
 
-          {/* Muscle Groups */}
+          {/* MUSCLE GROUPS */}
           <div className="mt-5 flex flex-wrap gap-2">
             {workout.muscleGroups.map((muscle) => (
               <span
@@ -64,10 +69,9 @@ const WorkoutDetailsPage = async ({ params }: WorkoutDetailsProps) => {
             ))}
           </div>
 
-          {/* ================= INFO TABLE ================= */}
-          <div className="mt-7 overflow-hidden rounded-2xl border border-slate-700 bg-[#15171c]">
-            {/* Equipment */}
-            <div className="flex items-center justify-between border-b border-slate-700 px-6 py-5">
+          {/* ================= INFO ================= */}
+          <div className="mt-7 overflow-hidden rounded-2xl border border-slate-800 bg-[#15171c]">
+            <div className="flex items-center justify-between border-b border-slate-800 px-6 py-5">
               <span className="text-xs font-bold uppercase tracking-wide text-slate-400">
                 Equipment
               </span>
@@ -77,8 +81,7 @@ const WorkoutDetailsPage = async ({ params }: WorkoutDetailsProps) => {
               </span>
             </div>
 
-            {/* Difficulty */}
-            <div className="flex items-center justify-between border-b border-slate-700 px-6 py-5">
+            <div className="flex items-center justify-between border-b border-slate-800 px-6 py-5">
               <span className="text-xs font-bold uppercase tracking-wide text-slate-400">
                 Difficulty
               </span>
@@ -88,8 +91,7 @@ const WorkoutDetailsPage = async ({ params }: WorkoutDetailsProps) => {
               </span>
             </div>
 
-            {/* Sets */}
-            <div className="flex items-center justify-between border-b border-slate-700 px-6 py-5">
+            <div className="flex items-center justify-between border-b border-slate-800 px-6 py-5">
               <span className="text-xs font-bold uppercase tracking-wide text-slate-400">
                 Sets
               </span>
@@ -97,8 +99,7 @@ const WorkoutDetailsPage = async ({ params }: WorkoutDetailsProps) => {
               <span className="text-sm text-slate-200">{workout.sets}</span>
             </div>
 
-            {/* Reps */}
-            <div className="flex items-center justify-between border-b border-slate-700 px-6 py-5">
+            <div className="flex items-center justify-between border-b border-slate-800 px-6 py-5">
               <span className="text-xs font-bold uppercase tracking-wide text-slate-400">
                 Reps
               </span>
@@ -106,8 +107,7 @@ const WorkoutDetailsPage = async ({ params }: WorkoutDetailsProps) => {
               <span className="text-sm text-slate-200">{workout.reps}</span>
             </div>
 
-            {/* Duration */}
-            <div className="flex items-center justify-between border-b border-slate-700 px-6 py-5">
+            <div className="flex items-center justify-between border-b border-slate-800 px-6 py-5">
               <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-slate-400">
                 <FiClock />
                 Duration
@@ -118,8 +118,7 @@ const WorkoutDetailsPage = async ({ params }: WorkoutDetailsProps) => {
               </span>
             </div>
 
-            {/* Calories */}
-            <div className="flex items-center justify-between border-b border-slate-700 px-6 py-5">
+            <div className="flex items-center justify-between border-b border-slate-800 px-6 py-5">
               <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-slate-400">
                 <FaFire />
                 Calories
@@ -130,7 +129,6 @@ const WorkoutDetailsPage = async ({ params }: WorkoutDetailsProps) => {
               </span>
             </div>
 
-            {/* Rating */}
             <div className="flex items-center justify-between px-6 py-5">
               <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-slate-400">
                 <FiStar />
@@ -151,9 +149,9 @@ const WorkoutDetailsPage = async ({ params }: WorkoutDetailsProps) => {
               {workout.instructions.map((instruction, index) => (
                 <li
                   key={instruction}
-                  className="flex gap-3 text-sm leading-5 text-slate-300"
+                  className="flex gap-3 text-sm leading-6 text-slate-300"
                 >
-                  <span className="font-bold text-white">{index + 1}.</span>
+                  <span className="font-bold text-lime-400">{index + 1}.</span>
 
                   <span>{instruction}</span>
                 </li>
@@ -163,15 +161,9 @@ const WorkoutDetailsPage = async ({ params }: WorkoutDetailsProps) => {
 
           {/* ================= BUTTONS ================= */}
           <div className="mt-8 flex flex-wrap gap-4">
-            <button className="flex items-center gap-2 rounded-lg bg-lime-400 px-6 py-3 font-semibold text-black transition hover:bg-lime-300">
-              <FiCalendar size={18} />
-              Add to today's plan
-            </button>
+            <TodayPlanButton workout={workout} />
 
-            <button className="flex items-center gap-2 rounded-lg border border-slate-600 px-6 py-3 font-semibold text-white transition hover:border-lime-400 hover:text-lime-400">
-              <FiBookmark size={18} />
-              Save for later
-            </button>
+            <SaveButton workout={workout} />
           </div>
         </div>
       </div>

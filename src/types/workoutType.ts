@@ -1,8 +1,8 @@
 export interface IWorkout {
-  id: string;
+  id: number;
   name: string;
   image: string;
-  muscleGroups: ["Chest", "Arms"];
+  muscleGroups: string[];
   equipment: string;
   difficulty: string;
   duration: number;
